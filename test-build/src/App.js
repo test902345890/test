@@ -9,7 +9,7 @@ function App() {
         <div style={ { borderRadius: '50%', overflow: 'hidden' }} className="App-logo" >
           <img alt="Steve" src={Steve} />
         </div>
-        <h1>Another deploy!</h1>
+        <h1>Happy Friday!</h1>
       </header>
     </div>
   );
