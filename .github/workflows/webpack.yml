@@ -28,7 +28,16 @@ jobs:
         cd test-build
         npm install
         npm run build
-        
+       
+    # Cache local node_modules to pass to testing jobs
+    - name: Cache local node_modules
+      id: cache_node_modules
+      uses: actions/cache@v3
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-modules-${{ env.NODE_VERSION }}-${{ hashFiles('**/package-lock.json') }}-${{ github.ref }}
+        restore-keys: |
+          ${{ runner.os }}-node-modules-${{ env.NODE_VERSION }}-${{ hashFiles('**/package-lock.json') }}-   
         
     # Restore just local node_modules and the Cypress binary archives.
     - name: Cache Cypress binary
