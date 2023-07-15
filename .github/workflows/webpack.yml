@@ -25,5 +25,6 @@ jobs:
     - name: Build
       run: |
         node --version
+        cd test-build
         npm install
         npm run build
