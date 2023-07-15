@@ -21,13 +21,6 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-
-    - name: Build
-      run: |
-        node --version
-        cd test-build
-        npm install
-        npm run build
        
     # Cache local node_modules to pass to testing jobs
     - name: Cache local node_modules
@@ -48,3 +41,11 @@ jobs:
         restore-keys: |
           cypress-${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}-
 
+
+
+    - name: Build
+      run: |
+        node --version
+        cd test-build
+        npm install
+        npm run build
