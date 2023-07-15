@@ -28,3 +28,14 @@ jobs:
         cd test-build
         npm install
         npm run build
+        
+        
+    # Restore just local node_modules and the Cypress binary archives.
+    - name: Cache Cypress binary
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/Cypress
+        key: cypress-${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}-${{ github.ref }}
+        restore-keys: |
+          cypress-${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}-
+
